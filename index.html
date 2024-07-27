@@ -74,20 +74,26 @@
 
     <script>
         function fetchNotifications() {
-            fetch('/notifications')
-                .then(response => response.json())
+            fetch('http://127.0.0.1:5000/notifications')  // Asegúrate de que la URL sea la correcta
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Red error: ' + response.statusText);
+                    }
+                    return response.json();
+                })
                 .then(notifications => {
                     notifications.forEach(notification => {
                         alert(notification.message); // Mostrar la notificación
-                        // Alternativamente, puedes usar una librería para mostrar notificaciones
                     });
-                });
+                })
+                .catch(error => console.error('Error:', error)); // Manejar errores
         }
-
+        
         setInterval(fetchNotifications, 60000); // Verificar notificaciones cada minuto
     </script>
 
     <script src="crearconductores.js"></script>
     <script src="editar-conductor.js"></script>
+    <script src="notifications.py"></script>
 </body>
 </html>

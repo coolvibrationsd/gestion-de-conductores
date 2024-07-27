@@ -70,6 +70,7 @@
         request.onsuccess = () => {
             imprimirAlerta('Conductor agregado correctamente', 'exito');
             formulario.reset();
+            obtenerConductores();
         };
 
         request.onerror = () => {
@@ -136,6 +137,9 @@
             DB = abrirConexion.result;
 
             const objectStore = DB.transaction('crm').objectStore('crm');
+
+            const listadoConductores = document.querySelector('#listadoConductores');
+            listadoConductores.innerHTML = '';
 
             objectStore.openCursor().onsuccess = function(e) {
                 const cursor = e.target.result;

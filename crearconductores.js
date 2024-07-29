@@ -205,19 +205,5 @@
         }
     }
 
-    function fetchNotifications() {
-        fetch('/notifications')
-            .then(response => response.json())
-            .then(notifications => {
-                notifications.forEach(notification => {
-                    alert(notification.message); // Mostrar la notificación
-                    // Alternativamente, puedes usar una librería para mostrar notificaciones
-                });
-            });
-    }
-    
-    setInterval(fetchNotifications, 60000); // Verificar notificaciones cada minuto
-    
-
 })();
 

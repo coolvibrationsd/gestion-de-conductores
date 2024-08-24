@@ -58,12 +58,13 @@ li:hover::after {
 }
 
 .section-listado-conductores{
-    margin-top: 400px;
+    margin-bottom: 60px;
 }
 
 .titulo-conductores {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    margin-top: 400px;
 }
 
 #formulario {
@@ -204,6 +205,11 @@ li.active::after {
    margin-bottom: 30px;
    color: #f4f3e6;
 }
+
+.select-box:hover{
+    background-color: #2453ca; /* Un azul más oscuro para el hover */
+    transition: background-color 0.3s ease; 
+  }
   
 .titulo-gestion {
  text-align: center; 
@@ -305,9 +311,3 @@ li.active::after {
     font-family: "Noto Sans", sans-serif;
 }
 
-#fileUpload {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-}

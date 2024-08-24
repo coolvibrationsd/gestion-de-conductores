@@ -1,219 +1,104 @@
-       <!DOCTYPE html>
-        <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Gestión de Conductores</title>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-            <style>
-                body {
-                    background-image: url('ojala.jpg');
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-attachment: fixed;
-                }
-        
-                i.fas {
-                    color: #f4f3e6; /* Color del ícono */
-                    font-size: 24px; /* Tamaño del ícono */
-                    margin-right: 20px; /* Espacio entre los íconos */
-                }
-
-                   /* Color crema para los títulos */
-                   .text-crema {
-                    color: #f4f3e6; /* Color crema */
-                }
-
-                li {
-                    display: inline-block;
-                    position: relative;
-                    color: #f4f3e6;
-                    font-family: sans-serif;
-                    font-size: 17px;
-                    cursor: pointer;
-                    transition: 0.3s all ease;
-                }
-
-                li:hover{
-                    color: #cdcdcd;
-                    transition: 0.3s all ease;
-                }
-
-                li::after {
-                    content: '';
-                    position: absolute;
-                    width: 100%;
-                    transform: scaleX(0);
-                    height: 2px;
-                    bottom: -5px;
-                    left: 0;
-                    background-color: #f7ad19;
-                    transform-origin: bottom right;
-                    transition: transform 0.4s ease-out;
-                }
-
-                li:hover::after {
-                    transform: scaleX(1);
-                    transform-origin: bottom left;
-                }
-
-                /* Estilo para el formulario */
-                #formulario {
-                 background-color: rgba(11, 25, 87, 0.5); /* Fondo azul oscuro con opacidad */
-                 border-radius: 15px; /* Bordes más ovalados */
-                 
-                }
-
-                /* Definir el color crema */
-                  .text-crema-500 {
-                      color: #f4f3e6; /* Ejemplo de color crema; ajusta según lo necesites */
-                   }
-                    
-                 .hover\:text-crema-500:hover {
-                       color: #f4f3e6; /* Cambia el color en hover */
-                  }
-
-                  input[type="text"],
-                  input[type="date"] {
-                     background: transparent; /* Fondo transparente */
-                     border: none; /* Sin bordes */
-                     border-bottom: 2px solid #f4f3e6; /* Línea inferior blanca */
-                     border-radius: 0; /* Sin bordes redondeados */
-                     padding: 0.5rem; /* Espaciado interno */
-                      color: #f4f3e6; /* Texto en color crema */
-                  }
-
-                  input[type="text"]:focus,
-                  input[type="date"]:focus {
-                   outline: none; /* Sin contorno predeterminado */
-                   border-bottom: 2px solid #f7ad19; /* Color de la línea inferior al enfocar */
-                  }   
-                  
-                  header {
-                    margin-top: 30px; /* Ajusta el valor según sea necesario */
-                }
-        
-                /* Añadir margen superior a la tabla */
-                .tabla-conductores {
-                    margin-top: 20px; /* Ajusta el valor según sea necesario */
-                }
-
-                li.active {
-                    color: #f7ad19; /* Color de texto activo */
-                }
-                
-                li.active::after {
-                    transform: scaleX(1);
-                    transform-origin: bottom left;
-                }
-
-                .hidden {
-                    display: none;
-                }
-
-                /* Añadir un gran margen superior a la sección del listado */
-                .section-listado-conductores {
-                  margin-top: 200px; /* Ajusta este valor según lo necesario */
-                 }
-
-            </style>
-        </head>
-        <body class="bg-gray-100">
-            
-            <!-- Barra de navegación -->
-            <header class="">
-                <div class="container mx-auto flex justify-between items-center px-6">
-                    <div class="flex items-center">
-                        <i class="fas fa-bars text-xl"></i> <!-- Ícono de "menú" -->
-                        <i class="fas fa-plus text-xl"></i> <!-- Ícono de "más" -->
-                    </div>
-                    
-                    <nav class="flex-1 text-center">
-                        <ul class="flex justify-center space-x-8">
-                            <li><a href="#" class= "nav-link text-crema-500 hover:text-crema-500">Conductores</a></li>
-                            <li><a href="#" class= "nav-link text-crema-500 hover:text-crema-500">Licencias</a></li>
-                            <li><a href="https://multas.pgr.gob.do/consultas" class= "nav-link text-crema-500 hover:text-crema-500">Multas</a></li>
-                        </ul>
-                    </nav>
-  
-                    <div class="flex items-center space-x-4">
-                        <a href="#" class="text-crema-500 hover:text-crema-500">Log In</a>
-                        <a href="#" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-700">Sign Up</a>
-                    </div>
-                </div>
-            </header>
-        
-            <!-- Contenido principal-->
-            <div class="container mx-auto mt-10">
-                <h1 class="text-3xl font-bold text-center text-crema">Gestión de Conductores</h1>
-        
-                <form id="formulario" class="mt-10 bg-white p-10 rounded shadow-md w-full max-w-lg mx-auto">
-                    <div class="mb-4">
-                        <label class="block text-crema-500 text-sm font-bold mb-2" for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-crema-500 text-sm font-bold mb-2" for="telefono">Teléfono:</label>
-                        <input type="text" id="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-crema-500 text-sm font-bold mb-2" for="licencia">Licencia:</label>
-                        <input type="text" id="licencia" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-crema-500 text-sm font-bold mb-2" for="emision">Fecha de Emisión:</label>
-                        <input type="date" id="emision" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-crema-500 text-sm font-bold mb-2" for="vence">Fecha de Vencimiento:</label>
-                        <input type="date" id="vence" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-crema-500 text-sm font-bold mb-2" for="nacimiento">Fecha de Nacimiento:</label>
-                        <input type="date" id="nacimiento" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>        
-                    <input type="submit" value="Agregar Conductor" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
-                </form>
-        
-                <div class="section-listado-conductores mt-10"></div>
-                    <h2 class="text-2xl font-bold text-center text-crema mb-4">Listado de Conductores</h2>
-        
-                    <div class="mb-4 text-center">
-                        <label for="ordenarFechas" class="block text-gray-700 text-sm font-bold mb-2">Ordenar por Fecha de Vencimiento:</label>
-                        <select id="ordenarFechas" class="shadow appearance-none border rounded w-auto py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline inline-block text-sm">
-                            <option value="asc">(Más antiguo primero)</option>
-                            <option value="desc">(Más reciente primero)</option>
-                        </select>   
-                    </div>
-                    <h2 class="text-2xl font-bold text-center text-crema mb-4">Listado de Conductores</h2>
-           
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full table-auto bg-white w-full">
-                            <thead>
-                                <tr>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Nombre</th>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Teléfono</th>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Licencia</th>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Emisión</th>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Vencimiento</th>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Nacimiento</th>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300"></th>
-                                       
-                                </tr>
-                            </thead>
-                            <tbody id="listadoConductores">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Conductores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100">
+     
+    <!--acciones de arriba-->
+    <header class="">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <div class="principal">
+                <i class="fas fa-paper-plane text-xl"></i> <!-- Ícono de "menú" -->
+                <i class="fas fa-plus text-xl"></i> <!-- Ícono de "más" -->
             </div>
+            
+            <nav class="elemento2-centro">
+                <ul class="space-x-8">
+                    <li><a href="#overflow-x-auto" class= "nav-link text-crema-500">Conductores</a></li>
+                    <li><a href="photoGallery" class= "nav-link text-crema-500">Licencias</a></li>
+                    <li><a href="https://multas.pgr.gob.do/consultas" class= "nav-link text-crema-500">Multas</a></li>
+                    <li><a href="#" class= "nav-link text-crema-500">Accidentes</a></li>
+                </ul>
+            </nav>
+
+            <div class="elemento1-derecha">
+                <a href="#" class="text-crema-500 ">Log In</a>
+                <a href="#" class="boton-lindo">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal-->
+    <div class="container mx-auto mt-10">
+        <h1 class="titulo-gestion">Gestión de Conductores</h1>
+
+        <form id="formulario" class="mt-10 bg-white p-10 rounded shadow-md w-full max-w-lg mx-auto">
+            <div class="mb-4">
+                <label class="block text-crema-500 text-sm font-bold mb-2" for="nombre">Nombre:</label>
+                <input type="text" id="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-crema-500 text-sm font-bold mb-2" for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-crema-500 text-sm font-bold mb-2" for="licencia">Licencia:</label>
+                <input type="text" id="licencia" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-crema-500 text-sm font-bold mb-2" for="emision">Fecha de Emisión:</label>
+                <input type="date" id="emision" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-crema-500 text-sm font-bold mb-2" for="vence">Fecha de Vencimiento:</label>
+                <input type="date" id="vence" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-crema-500 text-sm font-bold mb-2" for="nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="nacimiento" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+            </div>        
+            <input type="submit" value="Agregar Conductor" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+        </form>
+ 
+        <!--listado :D-->
+        <div class="section-listado-conductores mt-10">
+            <h2 class="text-crema mb-4 titulo-conductores">Listado de Conductores</h2>
         
-            <script src="crearconductores.js"></script>
-            <script src="editar-conductor.js"></script>
-           
-        </body>
-        </html>
-        
-       
+            <div class="text-center mb-4">
+                <label for="ordenarFechas" class="label-text">Ordenar por:</label>
+                <select id="ordenarFechas" class="select-box">
+                    <option value="asc">Más antiguo primero</option>
+                    <option value="desc">Más reciente primero</option>
+                </select>
+            </div>
+    
+            <div id="overflow-x-auto">
+                <table class="listado-conductores min-w-full table-auto w-full">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Nombre</th>
+                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Teléfono</th>
+                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Licencia</th>
+                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Emisión</th>
+                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Vencimiento</th>
+                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Nacimiento</th>
+                            <th class="px-4 py-2 border-b-2 border-gray-300"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="listadoConductores">
+                    </tbody>
+                </table>
+            </div>
+    <script src="crearconductores.js"></script>
+    <script src="editar-conductor.js"></script>
+   
+</body>
+</html>

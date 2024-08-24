@@ -89,7 +89,7 @@
             imprimirAlerta('Hubo un error al agregar el conductor', 'error');
         };
     }
-
+        
         function obtenerConductores() {
             const abrirConexion = window.indexedDB.open('crm', 1);
         
@@ -127,25 +127,25 @@
                             listadoConductores.innerHTML += `
                                 <tr>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <p class="text-sm leading-5 font-medium text-gray-700 text-lg font-bold">${nombre}</p>
+                                        <p class="text-crema-500">${nombre}</p>
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <p class="text-gray-700">${telefono}</p>
+                                        <p class="text-crema-500">${telefono}</p>
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 leading-5 text-gray-700">
-                                        <p class="text-gray-600">${licencia}</p>
+                                        <p class="text-crema-500">${licencia}</p>
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <p class="text-gray-700">${emision}</p>
+                                        <p class="text-crema-500">${emision}</p>
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <p class="text-gray-600">${vence}</p>
+                                        <p class="text-crema-500">${vence}</p>
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <p class="text-gray-700">${nacimiento}</p>
+                                        <p class="text-crema-500">${nacimiento}</p>
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5">
-                                        <a href="editar-cliente.html?id=${id}" class="text-teal-600 hover:text-teal-900 mr-5">Editar</a>
+                                        <a href="editar-cliente.html?id=${id}" class="text-crema-500 hover:text-teal-900 mr-5">Editar</a>
                                         <a href="#" data-conductor="${id}" class="text-red-600 hover:text-red-900 eliminar">Eliminar</a>
                                     </td>
                                 </tr>`;
@@ -183,13 +183,19 @@
     }
 
     function imprimirAlerta(mensaje, tipo) {
+        const alertaExistente = formulario.querySelector('.alerta');
+      // Si ya existe una alerta, la removemos antes de crear una nueva
+        if (alertaExistente) {
+        alertaExistente.remove();
+       }
+
         const divMensaje = document.createElement('div');
         divMensaje.classList.add("px-4", "py-3", "rounded", "max-w-lg", "mx-auto", "mt-6", "text-center");
 
         if (tipo === 'error') {
-            divMensaje.classList.add('bg-red-100', "border-red-400", "text-red-700");
+            divMensaje.classList.add('bg-red-700', "border-red-700", "text-red-600");
         } else {
-            divMensaje.classList.add('bg-green-100', "border-green-400", "text-green-700");
+            divMensaje.classList.add('bg-green-700', "border-green-700", "text-green-100");
         }
 
         divMensaje.textContent = mensaje;
@@ -199,5 +205,5 @@
             divMensaje.remove();
         }, 3000);
     }
-})()
 
+})()

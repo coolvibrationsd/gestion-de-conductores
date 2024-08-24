@@ -1,0 +1,126 @@
+body {
+    background-image: url('ojala.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+header {
+    margin-top: 100px; 
+}
+     
+   .tabla-conductores {
+       margin-top: 50px; 
+    }
+   
+    #formulario {
+       background-color: rgba(11, 25, 87, 0.5); 
+       border-radius: 15px; 
+       max-width: 430px; 
+       margin: 0 auto; 
+       padding: 40px; 
+       height: 539px;
+       margin-top: 45px; 
+       color: #f4f3e6;
+    }
+     
+     
+    #formulario input[type="submit"] {
+       width: 95%; 
+       padding: 10px 0; 
+       background-color: #437ced;
+       color: #fff; 
+       border: none; 
+       border-radius: 4px; 
+       font-size: 17px; 
+       cursor: pointer; 
+       margin-top: -20px; 
+   }
+     
+   #formulario input[type="submit"]:hover {
+       background-color: #2453ca; 
+       transition: background-color 0.3s ease; 
+   }
+   
+   input[type="text"],
+   input[type="date"] {
+      background: transparent; 
+      border: none; 
+      border-bottom: 2px solid #f4f3e6; 
+      border-radius: 0; 
+      padding: 0.5rem; 
+      color: #f4f3e6; 
+      width: 90%;
+      padding: 8px;
+      margin-bottom: 35px; 
+      font-size: 14px; 
+      height: 12px;
+     
+   } 
+   
+   input[type="text"]:focus,
+   input[type="date"]:focus {
+    outline: none; 
+    border-bottom: 2px solid #f7ad19; 
+   }   
+   
+   .hidden {
+       display: none;
+   }
+   
+   .text-center {
+       margin-top: 20px;
+       text-align: left;
+       margin-left: 100px;
+   }
+      
+   .label-text {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: bold;
+    color: #f4f3e6;
+    font-size: 14px;
+   } 
+      
+   .titulo-gestion {
+     text-align: center;  
+     font-size: 2rem;    
+     color: #f4f3e6;     
+     font-family: "Noto Sans", sans-serif;
+     font-size: 25px;
+     margin-top: 50px;
+    }
+
+    .alerta {
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 4px;
+        font-size: 16px;
+        text-align: center;
+        width: 90%;
+        max-width: 450px; 
+        margin-left: 0px; 
+        margin-right: auto; 
+    }
+   
+    .text-crema-500 {
+       color: #f4f3e6;  
+       font-family: 'Noto Sans', sans-serif;
+    }
+   
+   .bg-red-700{
+       color: #a33926;
+   }
+   
+   .text-red-600 {
+       color: #c53f27; 
+   }
+     
+   .text-green-100{
+    color: #4e9430
+   }
+         
+   .bg-green-700{
+    color:#1f3a15;
+    background-color: #4e9430;
+   }

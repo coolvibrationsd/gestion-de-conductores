@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Conductores</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mx-auto mt-10">
+        <h1 class="text-center mb-4">Gestión de Conductores</h1> 
+        <form id="formulario" class="bg-white p-4 rounded shadow-sm">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="licencia">Licencia:</label>
+                <input type="text" id="licencia" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="emision">Fecha de Emisión:</label>
+                <input type="date" id="emision" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="vence">Fecha de Vencimiento:</label>
+                <input type="date" id="vence" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="nacimiento" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Actualizar Conductor</button>
+        </form>
+
+        <div class="mt-10">
+            <h2 class="text-center mb-4">Listado de Conductores</h2>
+            <div class="overflow-x-auto"></div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Licencia</th>
+                        <th>Fecha de Emisión</th>
+                        <th>Fecha de Vencimiento</th>
+                        <th>Fecha de Nacimiento</th>
+                      
+                    </tr>
+                </thead>
+                <tbody id="listadoConductores">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="editar-conductor.js"></script>
+ 

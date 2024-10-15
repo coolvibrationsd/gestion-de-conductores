@@ -19,23 +19,28 @@
                 console.error('Elemento #listadoConductores no encontrado');
             } 
 
-            const botonExportar = document.querySelector('.text-crema-500'); // Selecciona el botón Exportar
+            const botonExportar = document.querySelector('#btnExportar'); // Seleccionar por id
             if (botonExportar) {
-                botonExportar.addEventListener('click', exportarConductores);
-            }       
+                botonExportar.addEventListener('click', (e) => {
+                    e.preventDefault(); // Evitar que el enlace recargue la página
+                    exportarConductores();
+                });
+            }
             
-            const botonImportar = document.querySelector('.boton-lindo'); // Selecciona el botón Importar
+            const botonImportar = document.querySelector('#btnImportar'); // Seleccionar por id
             if (botonImportar) {
-                botonImportar.addEventListener('click', () => {
+                botonImportar.addEventListener('click', (e) => {
+                    e.preventDefault(); 
                     const inputFile = document.createElement('input');
                     inputFile.type = 'file';
                     inputFile.accept = '.json';
-                    inputFile.addEventListener('change', importarConductores); // Llama a importarConductores cuando se seleccione un archivo
-                    inputFile.click(); // Abre el diálogo para seleccionar un archivo
+                    inputFile.addEventListener('change', importarConductores);
+                    inputFile.click();
                 });
-            }            
+            }
+               
+            obtenerConductores();
     
-            obtenerConductores(); 
         } catch (error) {
             console.error(error);
         }
@@ -132,7 +137,7 @@
        });
     }
 
-     //para comprobar que lleguen notificaciones cuando sea realmente necesario
+       //verifica y pone condiciones para asegurar que se envien notificaciones cuando sea necesario
     function verificarNotificaciones() {
         const transaction = DB.transaction(['crm'], 'readonly');
         const objectStore = transaction.objectStore('crm');
@@ -199,26 +204,26 @@
     };
     
     function exportarConductores() {
-        const transaction = DB.transaction(['crm'], 'readonly'); // Inicia una transacción de solo lectura
-        const objectStore = transaction.objectStore('crm'); // Accede al almacén de datos 'crm'
+        const transaction = DB.transaction(['crm'], 'readonly'); 
+        const objectStore = transaction.objectStore('crm'); 
     
-        let conductores = []; // Array para almacenar los conductores
+        let conductores = []; 
     
         objectStore.openCursor().onsuccess = function(event) {
             const cursor = event.target.result;
     
             if (cursor) {
-                conductores.push(cursor.value); // Agrega el conductor al array
-                cursor.continue(); // Continúa al siguiente conductor
+                conductores.push(cursor.value); 
+                cursor.continue(); 
             } else {
                 // Cuando termina el cursor, exporta los datos a JSON
                 const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(conductores));
                 const downloadAnchorNode = document.createElement('a');
                 downloadAnchorNode.setAttribute("href", dataStr);
                 downloadAnchorNode.setAttribute("download", "conductores.json");
-                document.body.appendChild(downloadAnchorNode); // Añade temporalmente el enlace de descarga
-                downloadAnchorNode.click(); // Simula el clic para descargar
-                downloadAnchorNode.remove(); // Elimina el enlace después de descargar
+                document.body.appendChild(downloadAnchorNode); 
+                downloadAnchorNode.click(); 
+                downloadAnchorNode.remove(); 
             }
         };
     
@@ -228,24 +233,24 @@
     }
 
     function importarConductores(event) {
-        const file = event.target.files[0]; // Obtén el archivo cargado
+        const file = event.target.files[0]; 
     
         if (file) {
             const reader = new FileReader();
             reader.onload = function(e) {
                 const contenido = e.target.result;
-                const conductores = JSON.parse(contenido); // Convierte el contenido JSON en objetos
+                const conductores = JSON.parse(contenido); 
     
-                const transaction = DB.transaction(['crm'], 'readwrite'); // Inicia una transacción de escritura
-                const objectStore = transaction.objectStore('crm'); // Accede al almacén de datos 'crm'
+                const transaction = DB.transaction(['crm'], 'readwrite'); 
+                const objectStore = transaction.objectStore('crm'); 
     
                 conductores.forEach(function(conductor) {
-                    objectStore.add(conductor); // Añade cada conductor al almacén de datos
+                    objectStore.add(conductor); 
                 });
     
                 transaction.oncomplete = function() {
                     console.log('Conductores importados correctamente');
-                    obtenerConductores(); // Actualiza la lista de conductores
+                    obtenerConductores(); 
                 };
     
                 transaction.onerror = function(error) {
@@ -253,7 +258,7 @@
                 };
             };
     
-            reader.readAsText(file); // Lee el archivo como texto
+            reader.readAsText(file); 
         }
     }
     
@@ -674,20 +679,5 @@
                     obtenerNotificaciones();
                 });
             }); 
-
-            let lastScrollPosition = 0;
-            const header = document.querySelector('header');
-            
-            window.addEventListener('scroll', () => {
-                let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            
-                if (currentScrollPosition > lastScrollPosition) {
-                    header.style.top = '-100px'; 
-                } else {
-                    header.style.top = '0';
-                }
-            
-                lastScrollPosition = currentScrollPosition;
-            });
         
 })();

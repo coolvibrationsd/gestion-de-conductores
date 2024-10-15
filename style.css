@@ -15,10 +15,6 @@ html, body {
     height: 100%;
 }
 
-.container-mt-10 {
-    margin-top: 70px; 
-}
-
 a{
     text-decoration: none;
 }
@@ -26,7 +22,6 @@ a{
 i.fas {
     color: #f4f3e6; 
     font-size: 24px; 
-    /*margin-right: 20px; */
 }
 
 li {
@@ -108,7 +103,6 @@ li:hover::after {
 
 #formulario {
     background-color: rgba(1, 27, 48, 0.596); 
-    /*border-radius: 32px;*/
     border-radius: 15px; 
     max-width: 440px; 
     margin: 0 auto; 
@@ -157,10 +151,8 @@ input[type="date"]:focus {
 }   
   
 header {
-    position: fixed;
     top: 0;
     width: 100%;
-   /* z-index: 1000; transition: top 0.3s ease-in;*/
 } 
 
 li.active {
@@ -202,12 +194,11 @@ li.active::after {
     text-align: center;   
     color: #f4f3e6;    
     font-family: "Noto Sans", sans-serif;
-    clear: both; /* Asegura que no haya otros elementos flotando a su lado */
+    clear: both; 
 }
   
 .elemento1-derecha {
  text-align: right;
- /*margin-right: 90px;*/
  margin-top: -45px;
 }
 
@@ -291,8 +282,6 @@ li.active::after {
  font-size: 16px;
  color: white;
  background-color: transparent; 
- /*text-decoration: none;*/
- /*font-family: "Noto Sans", sans-serif;*/
 }
   
 .boton-lindo::after {
@@ -377,7 +366,6 @@ li.active::after {
     text-align: center;
     margin-top: 400px;
 }
-
 
 .card {
     background-color: rgba(1, 27, 48, 0.582);

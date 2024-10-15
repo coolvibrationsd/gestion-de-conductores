@@ -3,103 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Conductores</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .oculto {
+            display: none;
+        }
+    </style>
+        <title>gestion de conductores</title>
 </head>
-<body class="bg-gray-100">
+<body>
      
-    <!--acciones de arriba-->
-    <header id="barra">
-        <div class="container mx-auto flex justify-between items-center px-6">
-            <div class="principal">
-                <a href="#barra">
-                <i class="fas fa-paper-plane text-xl"></i> <!-- Ícono de "menú" -->
-                <i class="fas fa-plus text-xl"></i> <!-- Ícono de "más" -->
+    <header id="header">
+        <div class="container">
+            <div class="principal" style= "position: relative;">
+                <i id="iconoNotificaciones" class="fas fa-paper-plane text-xl"></i>
+                <span id="badgeNotificaciones" class="badge hidden">0</span> 
+                <i class="fas fa-plus text-xl"></i> 
+                <div id="bandejaNotificaciones" class="bandeja">
+                    <p class="text-gray-600">No hay notificaciones</p>
+                </div>
             </div>
             
             <nav class="elemento2-centro">
                 <ul class="space-x-8">
-                    <li><a href="#overflow-x-auto" class= "nav-link text-crema-500">Conductores</a></li>
-                    <li><a href="photoGallery" class= "nav-link text-crema-500">Licencias</a></li>
-                    <li><a href="https://multas.pgr.gob.do/consultas" class= "nav-link text-crema-500">Multas</a></li>
-                    <li><a href="#" class= "nav-link text-crema-500">Accidentes</a></li>
+                    <li><a href="#Formulario" class="nav-link text-crema-500" onclick="mostrarTitulo()">Conductores</a></li>
+                    <li><a href="https://multas.pgr.gob.do/consultas" class="nav-link text-crema-500">Multas</a></li>
+                    <li><a href="#zona-accidentes" class="nav-link text-crema-500" onclick="ocultarSecciones()">Accidentes</a></li>
                 </ul>
             </nav>
 
             <div class="elemento1-derecha">
-                <a href="" class="text-crema-500 ">Log In</a>
-                <a href="" class="boton-lindo">Sign Up</a>
+                <a href="#" class="text-crema-500">Exportar</a>
+                <a href="#" class="boton-lindo">Importar</a>
             </div>
         </div>
     </header>
 
     <!-- Contenido principal-->
-    <div class="container mx-auto mt-10">
-        <h1 class="titulo-gestion">Gestión de Conductores</h1>
+    <div class="container-mt-10">
+        <h1 id="titulo-gestion" class="titulo-gestion">Gestión de Conductores</h1>  
 
-        <form id="formulario" class="mt-10 bg-white p-10 rounded shadow-md w-full max-w-lg mx-auto">
-            <div class="mb-4">
-                <label class="block text-crema-500 text-sm font-bold mb-2" for="nombre">Nombre:</label>
-                <input type="text" id="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-crema-500 text-sm font-bold mb-2" for="telefono">Teléfono:</label>
-                <input type="text" id="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-crema-500 text-sm font-bold mb-2" for="licencia">Licencia:</label>
-                <input type="text" id="licencia" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-crema-500 text-sm font-bold mb-2" for="emision">Fecha de Emisión:</label>
-                <input type="date" id="emision" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-crema-500 text-sm font-bold mb-2" for="vence">Fecha de Vencimiento:</label>
-                <input type="date" id="vence" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-4">
-                <label class="block text-crema-500 text-sm font-bold mb-2" for="nacimiento">Fecha de Nacimiento:</label>
-                <input type="date" id="nacimiento" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
-            </div>        
-            <input type="submit" value="Agregar Conductor" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
-        </form>
+        <div id="Formulario" class="section conductores">
+            <form id="formulario">
+                <div class="mb-4">
+                    <label class="block text-crema-500 text-sm font-bold mb-2" for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-crema-500 text-sm font-bold mb-2" for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-crema-500 text-sm font-bold mb-2" for="licencia">Licencia:</label>
+                    <input type="text" id="licencia" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-crema-500 text-sm font-bold mb-2" for="emision">Fecha de Emisión:</label>
+                    <input type="date" id="emision" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-crema-500 text-sm font-bold mb-2" for="vence">Fecha de Vencimiento:</label>
+                    <input type="date" id="vence" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-crema-500 text-sm font-bold mb-2" for="nacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" id="nacimiento" class="shadow appearance-none border rounded w-full py-2 px-3 text-crema-500 leading-tight focus:outline-none focus:shadow-outline">
+                </div>        
+                <input type="submit" value="Agregar Conductor" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+            </form>
  
-        <!--listado :D-->
-        <div class="section-listado-conductores mt-10">
-            <h2 class="text-crema mb-4 titulo-conductores">Listado de Conductores</h2>
+            <!--listado :D-->
+            <div class="section-listado-conductores">
+                <h2 class="text-crema mb-4 titulo-conductores">Listado de Conductores</h2>
+                
+                <div class="text-center mb-4">
+                    <label for="ordenarFechas" class="label-text">Ordenar por:</label>
+                    <select id="ordenarFechas" class="select-box">
+                        <option value="asc">Más antiguo primero</option>
+                        <option value="desc">Más reciente primero</option>
+                    </select>
+                </div>
         
-            <div class="text-center mb-4">
-                <label for="ordenarFechas" class="label-text">Ordenar por:</label>
-                <select id="ordenarFechas" class="select-box">
-                    <option value="asc">Más antiguo primero</option>
-                    <option value="desc">Más reciente primero</option>
-                </select>
+                <div id="list">
+                    <table class="listado-conductores min-w-full table-auto w-full">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Nombre</th>
+                                <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Teléfono</th>
+                                <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Licencia</th>
+                                <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Emisión</th>
+                                <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Vencimiento</th>
+                                <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Nacimiento</th>
+                                <th class="px-4 py-2 border-b-2 border-gray-300"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="listadoConductores">
+                        </tbody>
+                    </table>
+                </div>
             </div>
+        </div>
+
+        <!-- Sección de Accidentes -->
+        <div id="zona-accidentes" class="section oculto">
+            <h1 class="titulo-accidentes">Gestión de Accidentes</h1>
+            <form id="formAccidentes"> 
+                <label for="nombreConductor">Nombre del Conductor</label>
+                <input type="text" id="nombreConductor" required>
+                
+                <label for="fechaAccidente">Fecha del Accidente</label>
+                <input type="date" id="fechaAccidente" required>
+                
+                <label for="lugarAccidente">Lugar del Accidente</label>
+                <input type="text" id="lugarAccidente" required>
+                
+                <label for="dineroPerdido">Gastos</label>
+                <input type="number" id="dineroPerdido" required>
+                
+                <label for="descripcionAccidente">Descripción</label>
+                <textarea id="descripcionAccidente" required></textarea>
+                
+                <button type="submit">Registrar Accidente</button>
+            </form>
+
+            <div class="mt-10">
+                <h2 class="text-crema mb-4 titulo-accidentes2">Listado de Accidentes</h2>
+                <div id="listadoAccidentes" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="card bg-white shadow-lg rounded-lg p-6">
+                        <div class="field">
+                            <strong>Nombre del Conductor:</strong>
+                            <span id="nombreAccidente">Juan Pérez</span>
+                        </div>
+                        <div class="field">
+                            <strong>Fecha del Accidente:</strong>
+                            <span id="fechaAccidenteLista">2024-10-10</span>
+                        </div>
+                        <div class="field">
+                            <strong>Lugar del Accidente:</strong>
+                            <span id="lugarAccidenteLista">Av. Siempre Viva</span>
+                        </div>
+                        <div class="field">
+                            <strong>Gastos:</strong>
+                            <span id="gastosAccidente">RD$ 5000</span>
+                        </div>
+                        <div class="field">
+                            <strong>Descripción:</strong>
+                            <span id="descripcionAccidenteLista">Choque con otro vehículo.</span>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+     
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
     
-            <div id="overflow-x-auto">
-                <table class="listado-conductores min-w-full table-auto w-full">
-                    <thead>
-                        <tr>
-                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Nombre</th>
-                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Teléfono</th>
-                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Licencia</th>
-                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Emisión</th>
-                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Vencimiento</th>
-                            <th class="px-4 py-2 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Fecha de Nacimiento</th>
-                            <th class="px-4 py-2 border-b-2 border-gray-300"></th>
-                        </tr>
-                    </thead>
-                    <tbody id="listadoConductores">
-                    </tbody>
-                </table>
-            </div>
-            
-        <script src="crearconductores.js"></script>
-        <script src="editar-conductor.js"></script>
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const target = link.getAttribute('href');
+    
+                    if (target.startsWith('#')) {
+                        e.preventDefault();
+    
+                     
+                        sections.forEach(section => {
+                            section.classList.add('oculto');
+                        });
+    
+
+                        const targetSection = document.querySelector(target);
+                        if (targetSection) {
+                            targetSection.classList.remove('oculto');
+                        }
+                    }
+                });
+            });
+        });
+    </script>   
+
+   <script>
+    function ocultarSecciones() {
+        var titulo = document.getElementById('titulo-gestion');
+        titulo.style.display = 'none';
+    }
+
+    function mostrarTitulo() {
+        var titulo = document.getElementById('titulo-gestion');
+        titulo.style.display = 'block'; 
+    }
+    </script>
+
+            <script src="crearconductores.js"></script>
+            <script src="editar-conductor.js"></script>
 </body>
 </html>

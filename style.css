@@ -1,13 +1,22 @@
 body {
-    background-image: url('ojala.jpg');
+    background-image: url('BEUTIFULLL.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    overflow-x: hidden;
+    overflow-x: clip !important;
 }
 
-html {
-    scroll-behavior: smooth;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container-mt-10 {
+    margin-top: 70px; 
 }
 
 a{
@@ -17,7 +26,7 @@ a{
 i.fas {
     color: #f4f3e6; 
     font-size: 24px; 
-    margin-right: 20px; 
+    /*margin-right: 20px; */
 }
 
 li {
@@ -57,34 +66,19 @@ li:hover::after {
     display: none;
 }
 
-.section-listado-conductores{
-    margin-bottom: 60px;
-}
-
-.titulo-conductores {
-    text-align: center;
-    margin-bottom: 20px;
-    margin-top: 400px;
-}
-
-#formulario {
-    background-color: rgba(11, 25, 87, 0.5); 
-    border-radius: 15px; 
-    max-width: 440px; 
-    margin: 0 auto; 
-    padding: 40px; 
-    height: 540px;
-    margin-top: 45px; 
-    color: #f4f3e6;
-    font-family: "Noto Sans", sans-serif;
+.section-listado-conductores {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    border-radius: 10px; 
 }
 
 .listado-conductores {
-    background-color: rgba(11, 25, 87, 0.5);
+    background-color: rgba(15, 44, 71, 0.849); 
     border-radius: 15px;
     width: 95%;
     margin: 0 auto;
-    border-collapse: collapse; /* Asegúrate de colapsar los bordes */
+    border-spacing: 0;
     text-align: left;
 }
 
@@ -93,47 +87,41 @@ li:hover::after {
     padding: 10px 35px;
     text-align: left;
     font-family: "Noto Sans", sans-serif;
-    font-weight: bold;
     border-bottom: 2px solid #f4f3e6; 
 }
 
 .listado-conductores td { 
-    padding: 10px 15px; /* Agrega padding izquierdo y derecho */
+    padding: 10px 15px; 
     color: #f4f3e6;
     font-family: "Noto Sans", sans-serif;
-    border-bottom: 1px solid #f4f3e6; 
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .listado-conductores tr:last-child td {
     border-bottom: none;
 }
 
-.listado-conductores th:first-child,
-.listado-conductores td:first-child {
-    border-top-left-radius: 10px; 
+.titulo-conductores {
+    text-align: center;
+    margin-top: 400px;
 }
 
-.listado-conductores th:last-child,
-.listado-conductores td:last-child {
-    border-top-right-radius: 10px; 
-}
-
-.listado-conductores tr:last-child td:first-child {
-    border-bottom-left-radius: 10px; 
-}
-
-.listado-conductores tr:last-child td:last-child {
-    border-bottom-left-radius: 10px;
-}
-
-.listado-conductores tbody tr:last-child td {
-    border-bottom: none; 
+#formulario {
+    background-color: rgba(1, 27, 48, 0.596); 
+    /*border-radius: 32px;*/
+    border-radius: 15px; 
+    max-width: 440px; 
+    margin: 0 auto; 
+    padding: 40px; 
+    height: 540px;
+    color: #f4f3e6;
+    font-family: "Noto Sans", sans-serif;
 }
 
 #formulario input[type="submit"] {
     width: 95%; 
     padding: 10px 0; 
-    background-color: #437ced;
+    background-color: #0768bd;
     color: #fff; 
     border: none; 
     border-radius: 4px; 
@@ -143,7 +131,7 @@ li:hover::after {
 }
 
 #formulario input[type="submit"]:hover {
-    background-color: #2453ca; 
+    background-color: #075599; 
     transition: background-color 0.3s ease; 
 }
 
@@ -159,7 +147,7 @@ input[type="date"] {
  padding: 3px;
  margin-bottom: 15px; 
  font-size: 14px; 
- height: 12px;
+ height: 39px;
 }
 
 input[type="text"]:focus,
@@ -169,12 +157,11 @@ input[type="date"]:focus {
 }   
   
 header {
-    margin-top: 10px; 
-}
-
-.tabla-conductores {
-    margin-top: 20px; 
-}
+    position: fixed;
+    top: 0;
+    width: 100%;
+   /* z-index: 1000; transition: top 0.3s ease-in;*/
+} 
 
 li.active {
     color: #f7ad19; 
@@ -183,10 +170,6 @@ li.active {
 li.active::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-}
-
-.section-listado-conductores {
-  margin-top: 200px; 
 }
 
 .text-center {
@@ -202,45 +185,36 @@ li.active::after {
 } 
   
 .select-box {
-   background-color: #437ced;
-   border: 1px solid #437ced;
+   background-color: #0768bd;
+   border: 1px solid #0768bd;
    border-radius: 4px;
    padding: 8px;
    font-size: 14px;
-   margin-bottom: 30px;
    color: #f4f3e6;
 }
 
 .select-box:hover{
-    background-color: #2453ca; /* Un azul más oscuro para el hover */
+    background-color: #075599; 
     transition: background-color 0.3s ease; 
   }
   
 .titulo-gestion {
- text-align: center; 
- font-size: 2rem;    
- font-weight: bold; 
- color: #f4f3e6;    
- font-family: "Noto Sans", sans-serif;
- font-size: 30px; 
- margin-bottom: 0px;
+    text-align: center;   
+    color: #f4f3e6;    
+    font-family: "Noto Sans", sans-serif;
+    clear: both; /* Asegura que no haya otros elementos flotando a su lado */
 }
-
+  
 .elemento1-derecha {
  text-align: right;
- margin-right: 90px;
- margin-top: -55px;
+ /*margin-right: 90px;*/
+ margin-top: -45px;
 }
 
 .elemento1-derecha a {
     font-family: "Noto Sans", sans-serif;
 }
 
-.elemento2-centro {
- flex: 1;
- text-align: center;
-}
-  
 .elemento2-centro{
    margin-left: 0;
    text-align: center;
@@ -252,9 +226,62 @@ li.active::after {
 }
 
 .principal{
-    text-align: left;
-    margin-left: 160px;
-    margin-bottom: -40px;
+    margin-left: 120px;
+    margin-bottom: -25px;
+}
+
+#bandejaNotificaciones {
+    position: absolute; 
+    top: 100%;
+    left: 0; 
+    width: 300px; 
+    background-color: rgba(11, 25, 87, 0.5); 
+    box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.37);
+    border: 1px solid rgba(255,255,255, 0.18);
+    z-index: 1000; 
+    padding: 10px;
+    border-radius: 8px;
+    color: #f4f3e6;
+    font-family: "Noto Sans", sans-serif;
+    opacity: 0; 
+    transform: translateY(-20px); 
+    transition: opacity 0.5s ease, transform 0.5s ease; 
+    display: none; 
+}
+
+#bandejaNotificaciones.visible {
+    display: block; 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+#iconoNotificaciones {
+    cursor: pointer;
+}
+
+#bandejaNotificaciones.active {
+    display: block;
+}
+
+.badge {
+    position: absolute;
+    top: 0%;
+    left: 0; 
+    background-color: #f7ad19;
+    color: rgb(77, 108, 248);
+    border-radius: 50%;
+    padding: 5px 8px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0px;
+    height: 4px;
+    z-index: 1000;
+}
+
+.badge.hidden {
+    display: none;
 }
 
 .boton-lindo {
@@ -264,8 +291,8 @@ li.active::after {
  font-size: 16px;
  color: white;
  background-color: transparent; 
- text-decoration: none;
- font-family: "Noto Sans", sans-serif;
+ /*text-decoration: none;*/
+ /*font-family: "Noto Sans", sans-serif;*/
 }
   
 .boton-lindo::after {
@@ -273,19 +300,122 @@ li.active::after {
  position: absolute;
  left: 52%;
  transform: translateX(-50%);
- bottom: 8px; 
+ bottom: 1px; 
  width: 100%;
  height: 40px; 
- background-color: #437ced; 
+ background-color:#0768bd; 
  border-radius: 20px; 
  z-index: -1; 
  transition: background-color 0.3s ease; 
 }
 
 .boton-lindo:hover::after {
-    background-color: #2453ca; /* Un azul más oscuro para el hover */
-  }
-  
+    background-color: #075599; 
+}
+
+#formAccidentes {
+    background-color: rgba(1, 27, 48, 0.596); 
+    border-radius: 15px; 
+    max-width: 440px; 
+    margin: 0 auto; 
+    padding: 40px; 
+    height: 540px;
+    color: #f4f3e6;
+    font-family: "Noto Sans", sans-serif;
+}
+
+#formAccidentes input[type="text"],
+#formAccidentes input[type="date"],
+#formAccidentes input[type="number"],
+#formAccidentes textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #f4f3e6;
+    border-radius: 0;
+    padding: 0.5rem;
+    color:#f4f3e6;
+    width: 89%;
+    padding: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    height: 39px;
+    resize: none;
+}
+
+#formAccidentes input[type="text"]:focus,
+#formAccidentes input[type="date"]:focus,
+#formAccidentes input[type="number"]:focus,
+#formAccidentes textarea:focus {
+    outline: none;
+    border-bottom: 2px solid #f7ad19;
+}
+
+#formAccidentes button {
+    width: 95%; 
+    padding: 10px 0; 
+    background-color: #0768bd;
+    color: #fff; 
+    border: none; 
+    border-radius: 4px; 
+    font-size: 17px; 
+    cursor: pointer; 
+    margin-top: -20px; 
+}
+
+#formAccidentes button:hover {
+    background-color: #075599; 
+    transition: background-color 0.3s ease; 
+}
+
+#listadoAccidentes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+}
+
+.titulo-accidentes2{
+    text-align: center;
+    margin-top: 400px;
+}
+
+
+.card {
+    background-color: rgba(1, 27, 48, 0.582);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: #f4f3e6;
+}
+
+
+.card h3 {
+    color: #f7ad19;
+    margin-bottom: 10px;
+}
+
+.accidente-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.accidente-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.description {
+    max-height: 100px;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
+
+.titulo-accidentes {
+    text-align: center;
+    color: #f4f3e6;
+    font-family: "Noto Sans", sans-serif;
+}
 
 .bg-red-700{
     color: #a33926;
@@ -304,7 +434,7 @@ li.active::after {
 }
 
 .text-crema-500 {
-    color: #f4f3e6; 
+    color: #fffde8; 
 }
   
 .hover\:text-crema-500:hover {
@@ -315,3 +445,12 @@ li.active::after {
     color: #f4f3e6; 
     font-family: "Noto Sans", sans-serif;
 }
+
+.border-red-700{
+    color:#a33926
+}
+
+.border-green-700{
+    color:#325f21
+}
+

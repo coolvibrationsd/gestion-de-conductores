@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
     let DB;
     let idConductor;
     const formulario = document.querySelector('#formulario');
@@ -25,7 +25,7 @@
     });
 
     function conectarDB() {
-        let abrirConexion = window.indexedDB.open('crm', 1);
+        let abrirConexion = window.indexedDB.open('crm', 2);
 
         abrirConexion.onerror = function() {
             console.log('Hubo un error al abrir la conexión con la base de datos');
@@ -77,6 +77,11 @@
 
     function actualizarConductor(e) {
         e.preventDefault();
+
+        if (!DB) {
+            console.log('No se ha podido conectar a la base de datos');
+            return;
+        }
     
         if (nombreInput.value === '' || telefonoInput.value === '' || licenciaInput.value === '' || emisionInput.value === '' || venceInput.value === '' || nacimientoInput.value === '') {
             imprimirAlerta('Todos los campos son obligatorios', 'error');
@@ -101,7 +106,7 @@
             imprimirAlerta('Editado Correctamente');
             setTimeout(() => {
                 window.location.href = 'index.html';
-            }, 1000); // Redirige a index.html después de 1 segundo
+            }, 1000); 
         };
         request.onerror = function(event) {
             console.log('Hubo un error al actualizar el conductor', event);
@@ -130,4 +135,4 @@
             divMensaje.remove();
         }, 3000);
     }
-})();
+})();*/

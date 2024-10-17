@@ -13,12 +13,12 @@
     document.addEventListener('DOMContentLoaded', () => {
         conectarDB();
 
-        // Verificar si estamos en la página de edición
+        
         const parametrosURL = new URLSearchParams(window.location.search);
         idConductor = parametrosURL.get('id');
 
         if (idConductor) {
-            // Solo se ejecutará si hay un ID en la URL, es decir, si se está editando
+            
             setTimeout(() => {
                 obtenerConductor(idConductor);
             }, 100);
@@ -98,7 +98,7 @@
             emision: emisionInput.value,
             vence: venceInput.value,
             nacimiento: nacimientoInput.value,
-            id: Number(idConductor) // Mantiene el ID actual del conductor
+            id: Number(idConductor) 
         };
     
         const transaction = DB.transaction(['crm'], 'readwrite');

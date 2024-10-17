@@ -1,8 +1,8 @@
-/*(function() {
+(function() {
     let DB;
     let idConductor;
     const formulario = document.querySelector('#formulario');
-   
+
     const nombreInput = document.querySelector('#nombre');
     const telefonoInput = document.querySelector('#telefono');
     const licenciaInput = document.querySelector('#licencia');
@@ -13,14 +13,17 @@
     document.addEventListener('DOMContentLoaded', () => {
         conectarDB();
 
-        formulario.addEventListener('submit', actualizarConductor);
-
+        // Verificar si estamos en la página de edición
         const parametrosURL = new URLSearchParams(window.location.search);
         idConductor = parametrosURL.get('id');
+
         if (idConductor) {
+            // Solo se ejecutará si hay un ID en la URL, es decir, si se está editando
             setTimeout(() => {
                 obtenerConductor(idConductor);
             }, 100);
+
+            formulario.addEventListener('submit', actualizarConductor);
         }
     });
 
@@ -30,7 +33,7 @@
         abrirConexion.onerror = function() {
             console.log('Hubo un error al abrir la conexión con la base de datos');
         };
-     
+
         abrirConexion.onsuccess = function() {
             DB = abrirConexion.result;
         };
@@ -95,7 +98,7 @@
             emision: emisionInput.value,
             vence: venceInput.value,
             nacimiento: nacimientoInput.value,
-            id: Number(idConductor)
+            id: Number(idConductor) // Mantiene el ID actual del conductor
         };
     
         const transaction = DB.transaction(['crm'], 'readwrite');
@@ -112,7 +115,6 @@
             console.log('Hubo un error al actualizar el conductor', event);
         };
     }
-    
 
     function imprimirAlerta(mensaje, tipo) {
         const alertas = document.querySelectorAll('.alerta');
@@ -128,11 +130,11 @@
         }
 
         divMensaje.textContent = mensaje;
-        const formulario = document.getElementById('formulario');
         formulario.appendChild(divMensaje);
 
         setTimeout(() => {
             divMensaje.remove();
         }, 3000);
     }
-})();*/
+})();
+

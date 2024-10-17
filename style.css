@@ -149,6 +149,18 @@ input[type="date"]:focus {
  outline: none; 
  border-bottom: 2px solid #f7ad19; 
 }   
+
+.alerta {
+    padding: 5px;
+    margin-top: 8px;
+    border-radius: 7px;
+    font-size: 16px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px; 
+    margin-left: 0px; 
+    margin-right: auto; 
+}
   
 header {
     top: 0;
@@ -405,20 +417,22 @@ li.active::after {
     font-family: "Noto Sans", sans-serif;
 }
 
+
 .bg-red-700{
     color: #a33926;
 }
 
 .text-red-600 {
-    color: #c53f27; 
+    color: #ff8383; 
 }
   
 .text-green-100{
- color: #4e9430
+ color: #0a3624
 }
       
 .bg-green-700{
- color:#325f21
+ color:#dcdd7e;
+ background-color: #245f37;
 }
 
 .text-crema-500 {
@@ -432,13 +446,5 @@ li.active::after {
 .text-crema {
     color: #f4f3e6; 
     font-family: "Noto Sans", sans-serif;
-}
-
-.border-red-700{
-    color:#a33926
-}
-
-.border-green-700{
-    color:#325f21
 }
 

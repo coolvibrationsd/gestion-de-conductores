@@ -19,15 +19,15 @@
                 console.error('Elemento #listadoConductores no encontrado');
             } 
 
-            const botonExportar = document.querySelector('#btnExportar'); // Seleccionar por id
+            const botonExportar = document.querySelector('#btnExportar');
             if (botonExportar) {
                 botonExportar.addEventListener('click', (e) => {
-                    e.preventDefault(); // Evitar que el enlace recargue la página
+                    e.preventDefault(); 
                     exportarConductores();
                 });
             }
             
-            const botonImportar = document.querySelector('#btnImportar'); // Seleccionar por id
+            const botonImportar = document.querySelector('#btnImportar'); 
             if (botonImportar) {
                 botonImportar.addEventListener('click', (e) => {
                     e.preventDefault(); 
@@ -262,7 +262,6 @@
         }
     }
     
-    
     function validarConductor(e) {
         e.preventDefault();
 
@@ -298,35 +297,18 @@
         const request = objectStore.add(conductor);
     
         request.onsuccess = (e) => {
-            const conductorID = e.target.result;  
-            
+            const conductorID = e.target.result;
             imprimirAlerta('Conductor agregado correctamente', 'exito');
             formulario.reset();
             obtenerConductores();
-            verificarNotificaciones();
-    
-            const fechaHoy = new Date();
-            const fechaVencimiento = new Date(conductor.vence);
-            const diferencia = Math.floor((fechaVencimiento - fechaHoy) / (1000 * 60 * 60 * 24));
-    
-            if (diferencia <= 7 && diferencia >= 0) {
-                const nuevaNotificacion = {
-                    idConductor: conductorID,
-                    fechaNotificacion: new Date().toISOString(),
-                    tipoNotificacion: 'Vencimiento',
-                    mensaje: `La licencia de ${conductor.nombre} vencerá pronto`,
-                    leida: false
-                };
-    
-                crearNotificacion(nuevaNotificacion);
-            }
+            verificarNotificaciones(); // Solo esta función se encargará de crear notificaciones
         };
     
         request.onerror = () => {
             imprimirAlerta('Hubo un error al agregar el conductor', 'error');
         };
-    }
-    
+    }    
+
     function obtenerNotificaciones() {
         const objectStore = DBNotificaciones.transaction('notificaciones', 'readonly').objectStore('notificaciones');
         const bandeja = document.getElementById('bandejaNotificaciones');
@@ -598,29 +580,26 @@
                 }
             }
         }
-
-        function imprimirAlerta(mensaje, tipo) {
-            const alertaExistente = formulario.querySelector('.alerta');
-            if (alertaExistente) {
-            alertaExistente.remove();
-           }
-    
-            const divMensaje = document.createElement('div');
-            divMensaje.classList.add("px-3", "py-3", "rounded", "max-w-lg", "mx-auto", "mt-6", "text-center");
-    
-            if (tipo === 'error') {
-                divMensaje.classList.add('bg-red-700', "border-red-700", "text-red-600");
-            } else {
-                divMensaje.classList.add('bg-green-700', "border-green-700", "text-green-100");
+            function imprimirAlerta(mensaje, tipo) {
+                const alertas = document.querySelectorAll('.alerta');
+                alertas.forEach(alerta => alerta.remove());
+        
+                const divMensaje = document.createElement('div');
+                divMensaje.classList.add('alerta');
+        
+                if (tipo === 'error') {
+                    divMensaje.classList.add('bg-red-700', 'text-red-600');
+                } else {
+                    divMensaje.classList.add('bg-green-700','text-green-100');
+                }
+        
+                divMensaje.textContent = mensaje;
+                formulario.appendChild(divMensaje);
+        
+                setTimeout(() => {
+                    divMensaje.remove();
+                }, 3000);
             }
-    
-            divMensaje.textContent = mensaje;
-            formulario.appendChild(divMensaje);
-    
-            setTimeout(() => {
-                divMensaje.remove();
-            }, 3000);
-        }
          
         document.getElementById("iconoNotificaciones").addEventListener("click", function() {
             const bandeja = document.getElementById('bandejaNotificaciones');
